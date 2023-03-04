@@ -9,6 +9,7 @@ import { UsersController } from './users.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { HashPasswordMiddleware } from './middleware/hash-password/hash-password.middleware';
+import { ConfirmPasswordMiddleware } from './middleware/confirm-password/confirm-password.middleware';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
@@ -18,7 +19,7 @@ import { HashPasswordMiddleware } from './middleware/hash-password/hash-password
 export class UsersModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // Implements the custom middleware for hashing the User password on save and update
-    consumer.apply(HashPasswordMiddleware).forRoutes(
+    consumer.apply(ConfirmPasswordMiddleware, HashPasswordMiddleware).forRoutes(
       {
         path: 'users',
         method: RequestMethod.POST,
