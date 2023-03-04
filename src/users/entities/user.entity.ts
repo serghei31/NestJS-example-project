@@ -20,7 +20,7 @@ export class User {
   description: string;
 
   @Column()
-  state: string;
+  country: string;
 
   @Column()
   city: string;
@@ -29,13 +29,16 @@ export class User {
   street: string;
 
   @Column()
-  houseNr: number;
+  houseNr: string;
 
   @Column()
   phone: string;
 
   @Column({ unique: true })
   email: string;
+
+  @Column()
+  password: string;
 
   @Column({
     type: 'enum',
