@@ -23,6 +23,12 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  @Post('/admin')
+  @UsePipes(ValidationPipe)
+  createAdmin(@Body() createUserDto: CreateUserDto) {
+    return this.usersService.createAdmin(createUserDto);
+  }
+
   @Get()
   findAll() {
     return this.usersService.findAll();
@@ -41,5 +47,10 @@ export class UsersController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.usersService.remove(+id);
+  }
+
+  @Patch(':id/deactivate')
+  deactivate(@Param('id') id: string) {
+    return this.usersService.deactivate(+id);
   }
 }

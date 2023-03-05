@@ -19,6 +19,15 @@ export class UsersService {
     return this.userRepository.save(newUser);
   }
 
+  createAdmin(createUserDto: CreateUserDto) {
+    const newUser = this.userRepository.create({
+      ...createUserDto,
+      role: 'admin',
+      createdAt: new Date(),
+    });
+    return this.userRepository.save(newUser);
+  }
+
   findAll() {
     return this.userRepository.find();
   }
@@ -36,5 +45,9 @@ export class UsersService {
 
   remove(id: number) {
     return this.userRepository.delete({ id });
+  }
+
+  deactivate(id: number) {
+    return this.userRepository.update({ id }, { active: false });
   }
 }
