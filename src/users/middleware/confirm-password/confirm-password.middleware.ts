@@ -18,6 +18,8 @@ export class ConfirmPasswordMiddleware implements NestMiddleware {
       );
     if (password !== passwordConfirm)
       throw new HttpException('passwords do not match', HttpStatus.BAD_REQUEST);
+
+    req.body.passwordConfirm = undefined;
     next();
   }
 }

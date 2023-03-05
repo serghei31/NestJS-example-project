@@ -37,7 +37,8 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  @Column()
+  // This column will not be selected by find functions and  QueryBuilder
+  @Column({ select: false })
   password: string;
 
   @Column({
@@ -50,7 +51,7 @@ export class User {
   @CreateDateColumn()
   createdAt: Date;
 
-  @Column({ type: 'date', nullable: true })
+  @Column({ nullable: true })
   modifiedAt: Date;
 
   @Column({ type: 'boolean', default: true })
