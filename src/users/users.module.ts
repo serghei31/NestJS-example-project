@@ -25,6 +25,10 @@ export class UsersModule implements NestModule {
         method: RequestMethod.POST,
       },
       {
+        path: 'users/admin',
+        method: RequestMethod.POST,
+      },
+      {
         path: 'users/:id',
         method: RequestMethod.PATCH,
       },

@@ -1,7 +1,9 @@
+import { Post } from 'src/posts/entities/post.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -38,7 +40,8 @@ export class User {
   email: string;
 
   // This column will not be selected by find functions and  QueryBuilder
-  @Column({ select: false })
+  //@Column({ select: false })
+  @Column()
   password: string;
 
   @Column({
@@ -56,4 +59,7 @@ export class User {
 
   @Column({ type: 'boolean', default: true })
   active: boolean;
+
+  @OneToMany(() => Post, (post) => post.authorID)
+  posts: Post[];
 }

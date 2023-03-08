@@ -4,7 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { User } from './users/entities/user.entity';
 import { UsersModule } from './users/users.module';
+import { PostsModule } from './posts/posts.module';
 import * as dotenv from 'dotenv';
+import { Post } from './posts/entities/post.entity';
+import { AuthModule } from './auth/auth.module';
 dotenv.config();
 
 @Module({
@@ -16,10 +19,12 @@ dotenv.config();
       username: `${process.env.MYSQL_USERNAME}`,
       password: `${process.env.MYSQL_PASSWORD}`,
       database: `${process.env.MYSQL_DB}`,
-      entities: [User],
+      entities: [User, Post],
       synchronize: true,
     }),
     UsersModule,
+    PostsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
