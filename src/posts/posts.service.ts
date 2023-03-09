@@ -29,7 +29,7 @@ export class PostsService {
   }
 
   findAll() {
-    return `This action returns all posts`;
+    return this.postRepository.find({ relations: ['authorID'] });
   }
 
   findOne(id: number) {

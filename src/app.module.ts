@@ -8,6 +8,7 @@ import { PostsModule } from './posts/posts.module';
 import * as dotenv from 'dotenv';
 import { Post } from './posts/entities/post.entity';
 import { AuthModule } from './auth/auth.module';
+import { PassportModule } from '@nestjs/passport';
 dotenv.config();
 
 @Module({
@@ -25,6 +26,7 @@ dotenv.config();
     UsersModule,
     PostsModule,
     AuthModule,
+    PassportModule.register({ session: true }),
   ],
   controllers: [AppController],
   providers: [AppService],

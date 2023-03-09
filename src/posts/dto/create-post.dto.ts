@@ -1,5 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, Length } from 'class-validator';
-import { User } from 'src/users/entities/user.entity';
+import { IsNotEmpty, IsString, Length } from 'class-validator';
 
 export class CreatePostDto {
   @IsNotEmpty()
@@ -8,6 +7,7 @@ export class CreatePostDto {
   title: string;
 
   @IsNotEmpty()
+  @IsString()
   text: string;
 
   @IsNotEmpty()

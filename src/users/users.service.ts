@@ -29,7 +29,7 @@ export class UsersService {
   }
 
   findAll() {
-    return this.userRepository.find();
+    return this.userRepository.find({ relations: ['posts'] });
   }
 
   findOne(id: number) {

@@ -24,7 +24,7 @@ export class Post {
   @Column({ nullable: true })
   modifiedAt: Date;
 
-  @Column()
+  @Column({ default: 0 })
   views: number;
 
   @Column()
